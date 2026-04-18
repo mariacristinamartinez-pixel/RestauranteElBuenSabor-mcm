@@ -10,60 +10,64 @@ package com.mycompany.restauranteelbuensabor;
  */
 public class Utilidades {
 
-    public static double calcular(double pr, double cn, double dc, double iv, double pp, int ni, boolean ap) {
+    public static double calcular(
+            double precio,
+            double cantidad,
+            double descuento,
+            double porcentajeIVA,
+            double porcentajePropina,
+            int numeroItems,
+            boolean aplicarPropina) {
 
-        double res = 0;
-        double tmp = 0;
-        double aux2 = 0;
+        double resultado = 0;
+        double ivacalculado = 0;
+        double resultadoFinal = 0;
 
 // calcula el resultado
-        res = pr * cn;
+        resultado = precio * cantidad;
 
-        if (dc > 0) {
-            res = res - (res * dc);
+        if (descuento > 0) {
+            resultado = resultado - (resultado * descuento);
         }
 
-        tmp = res * iv;
+        ivacalculado = resultado * porcentajeIVA;
+        resultado = resultado + ivacalculado;
 
-        res = res + tmp;
-
-        if (ap) {
-
-            res = res + (res * pp);
-
+        if (aplicarPropina) {
+            resultado = resultado + (resultado * porcentajePropina);
         }
 // imprime restaurante
         System.out.println("RESTAURANTE EL BUEN SABOR - calculo aplicado");
 
-        aux2 = res;
+        resultadoFinal = resultado;
 
-        return aux2;
+        return resultadoFinal;
 
     }
 
     public static boolean validar() {
-        int cont = 0;
-        int i = 0;
+        int cantidadItems = 0;
+        int indice = 0;
 
-        while (i < Datos.cant.length) {
-            if (Datos.cant[i] > 0) {
-                cont = cont + 1;
+        while (indice < Datos.cantidades.length) {
+            if (Datos.cantidades[indice] > 0) {
+                cantidadItems = cantidadItems + 1;
 
             }
 
-            i++;
+            indice++;
 
         } // fin while
         // reinicia si no hay nada - efecto secundario no documentado
-        if (cont == 0) {
+        if (cantidadItems == 0) {
 
-            Datos.tot = 0;
+            Datos.total = 0;
 
-            Datos.tmp = "";
+            Datos.temporal = "";
 
         }
 
-        return cont > 0;
+        return cantidadItems> 0;
 
     }
 
@@ -84,17 +88,17 @@ public class Utilidades {
 // if(sub>50000){ sub=sub+(sub*0.19); sub=sub+(sub*0.10); }
 // else{ sub=sub+(sub*0.19); }
 // Datos.tot=sub;
-        int i = 0;
+        int indice = 0;
 
-        while (i < Datos.cant.length) {
+        while (indice < Datos.cantidades.length) {
 
-            Datos.cant[i] = 0;
-            i++;
+            Datos.cantidades[indice] = 0;
+            indice++;
 
         }
-        Datos.tot = 0;
-        Datos.est = 0;
-        Datos.ms = 0;
-        Datos.tmp = "";
+        Datos.total = 0;
+        Datos.estadoMesa = 0;
+        Datos.mesaActual = 0;
+        Datos.temporal = "";
     }
 }

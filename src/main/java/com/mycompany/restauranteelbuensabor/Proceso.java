@@ -10,7 +10,7 @@ package com.mycompany.restauranteelbuensabor;
  */
 public class Proceso {
 
-    public static double hacerTodo() {
+    public static double calcularTotalFactura() {
         double subtotal = 0;
         double iva = 0;
         double total = 0;
