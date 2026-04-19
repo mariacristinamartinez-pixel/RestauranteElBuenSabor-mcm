@@ -15,16 +15,14 @@ public class Pedido {
     private final List<ItemPedido> items = new ArrayList<>();
 
     public void agregarItem(Producto producto, int cantidad) {
-
-        for (ItemPedido item : items) {
-            if (item.getProducto().getNombre().equals(producto.getNombre())) {
-                item.aumentarCantidad(cantidad);
-                return;
-            }
+    for (ItemPedido item : items) {
+        if (item.getProducto().getNombre().equals(producto.getNombre())) {
+            item.setCantidad(item.getCantidad() + cantidad);
+            return;
         }
-
-        items.add(new ItemPedido(producto, cantidad));
     }
+    items.add(new ItemPedido(producto, cantidad));
+}
 
     public double calcularSubtotal() {
         double subtotal = 0;
@@ -37,8 +35,16 @@ public class Pedido {
     }
 
     public int contarItemsDiferentes() {
-        return items.size();
+    int contador = 0;
+
+    for (ItemPedido item : items) {
+        if (item.getCantidad() > 0) {
+            contador++;
+        }
     }
+
+    return contador;
+}
 
     public boolean tieneProductos() {
         return !items.isEmpty();

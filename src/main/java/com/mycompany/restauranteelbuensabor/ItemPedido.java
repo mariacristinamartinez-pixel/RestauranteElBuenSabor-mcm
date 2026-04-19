@@ -25,6 +25,11 @@ public class ItemPedido {
         return cantidad;
     }
 
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+
     public void aumentarCantidad(int cantidad) {
         this.cantidad += cantidad;
     }
@@ -32,5 +37,7 @@ public class ItemPedido {
     public double calcularSubtotal() {
         return producto.getPrecio() * cantidad;
     }
+
+    
     
 }

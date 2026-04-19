@@ -43,6 +43,7 @@ public class Factura {
     }
 
     public double calcularPropina() {
+         double subtotal = calcularSubtotal();
         if (calcularBase() > UMBRAL_PROPINA) {
             return (calcularBase() + calcularIVA()) * PROPINA;
         }
