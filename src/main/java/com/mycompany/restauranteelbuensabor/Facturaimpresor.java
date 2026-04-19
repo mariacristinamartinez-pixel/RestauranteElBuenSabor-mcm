@@ -8,13 +8,16 @@ package com.mycompany.restauranteelbuensabor;
  *
  * @author Maria Cristina
  */
-public class Facturaimpresor {
+public class FacturaImpresor {
+    private static final String NOMBRE_RESTAURANTE = "El Buen Sabor";
     public static void imprimir(Factura factura) {
+        
 
         String sep = "========================================";
 
         System.out.println(sep);
-        System.out.println("    El Buen Sabor");
+        System.out.println(" "+NOMBRE_RESTAURANTE);
+        
         System.out.println("    Calle 15 #8-32, Valledupar");
         System.out.println("    NIT: 900.123.456-7");
         System.out.println(sep);

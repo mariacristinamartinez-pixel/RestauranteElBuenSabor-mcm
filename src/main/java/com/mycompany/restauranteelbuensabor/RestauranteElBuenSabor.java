@@ -42,10 +42,10 @@ public class RestauranteElBuenSabor {
                 case 1:
                     
                     System.out.println("------ CARTA ------");
-                    for (int i = 0; i < menu.size(); i++) {
-                        Producto p = menu.get(i);
+                    for (int indice = 0; indice < menu.size(); indice++) {
+                        Producto p = menu.get(indice);
                         System.out.printf("%d. %-20s $%,.0f%n",
-                                (i + 1),
+                                (indice + 1),
                                 p.getNombre(),
                                 p.getPrecio());
                     }
@@ -102,7 +102,7 @@ public class RestauranteElBuenSabor {
                     ) {
 
                         Factura factura = new Factura(mesa.getPedidoActual(), numeroFactura);
-                        Facturaimpresor.imprimir(factura);
+                        FacturaImpresor.imprimir(factura);
 
                         numeroFactura++;
 
