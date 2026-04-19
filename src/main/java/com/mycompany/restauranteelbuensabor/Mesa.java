@@ -27,7 +27,7 @@ public class Mesa {
         return pedidoActual;
     }
 
-    // Reinicia la mesa (nueva orden)
+    
     public void nuevaOrden() {
         this.pedidoActual = new Pedido();
     }

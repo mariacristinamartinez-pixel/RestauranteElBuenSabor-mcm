@@ -12,6 +12,8 @@ import java.util.List;
  * @author Maria Cristina
  */
 public class MenuRestaurante {
+    
+    // Menú estático de ejemplo (simula datos persistidos en base de datos)
     public static List<Producto> obtenerMenu() {
 
         List<Producto> menu = new ArrayList<>();

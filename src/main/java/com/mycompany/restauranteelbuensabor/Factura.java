@@ -9,6 +9,7 @@ package com.mycompany.restauranteelbuensabor;
  * @author Maria Cristina
  */
 public class Factura {
+
     private final Pedido pedido;
     private final int numero;
 
@@ -27,6 +28,7 @@ public class Factura {
         return pedido.calcularSubtotal();
     }
 
+    // Se aplica un 5% de descuento si hay más de 3 productos diferentes en el pedido
     public double calcularDescuento() {
         if (pedido.contarItemsDiferentes() > MIN_ITEMS_DESCUENTO) {
             return calcularSubtotal() * DESCUENTO;
@@ -38,18 +40,22 @@ public class Factura {
         return calcularSubtotal() - calcularDescuento();
     }
 
+    // El IVA se calcula sobre el subtotal después de aplicar el descuento
     public double calcularIVA() {
         return calcularBase() * IVA;
     }
+    
+    // La propina del 10% se aplica solo si la base supera el umbral definido
+    // y se calcula sobre el total con IVA incluido
 
     public double calcularPropina() {
-         double subtotal = calcularSubtotal();
+        double subtotal = calcularSubtotal();
         if (calcularBase() > UMBRAL_PROPINA) {
             return (calcularBase() + calcularIVA()) * PROPINA;
         }
         return 0;
     }
-
+    // Total final = base + IVA + propina (si aplica)
     public double calcularTotal() {
         return calcularBase() + calcularIVA() + calcularPropina();
     }
@@ -61,5 +67,5 @@ public class Factura {
     public Pedido getPedido() {
         return pedido;
     }
-    
+
 }

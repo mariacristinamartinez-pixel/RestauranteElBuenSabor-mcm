@@ -40,7 +40,7 @@ public class RestauranteElBuenSabor {
             switch (opcion) {
 
                 case 1:
-                    // mostrar carta
+                    
                     System.out.println("------ CARTA ------");
                     for (int i = 0; i < menu.size(); i++) {
                         Producto p = menu.get(i);
@@ -52,7 +52,7 @@ public class RestauranteElBuenSabor {
                     break;
 
                 case 2:
-                    // agregar producto
+                    
                     System.out.print("Numero de producto: ");
                     int indice = sc.nextInt();
 
@@ -79,7 +79,7 @@ public class RestauranteElBuenSabor {
                     break;
 
                 case 3:
-                    // ver pedido
+                   
                     if (mesa.tienePedido()) {
 
                         System.out.println("---- PEDIDO ----");
@@ -97,7 +97,7 @@ public class RestauranteElBuenSabor {
                     break;
 
                 case 4:
-                    // generar factura
+                    
                     if (mesa.tienePedido()
                     ) {
 
@@ -112,7 +112,7 @@ public class RestauranteElBuenSabor {
                     break;
 
                 case 5:
-                    // nueva mesa
+                    
                     mesa.nuevaOrden();
                     System.out.println("Nueva orden en mesa.");
                     break;

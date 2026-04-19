@@ -13,7 +13,9 @@ import java.util.List;
  */
 public class Pedido {
     private final List<ItemPedido> items = new ArrayList<>();
-
+    
+    
+   // Si el producto ya existe en el pedido, acumula la cantidad en lugar de duplicarlo
     public void agregarItem(Producto producto, int cantidad) {
     for (ItemPedido item : items) {
         if (item.getProducto().getNombre().equals(producto.getNombre())) {
@@ -34,6 +36,7 @@ public class Pedido {
         return subtotal;
     }
 
+    // Cuenta la cantidad de productos distintos en el pedido (no cantidades)
     public int contarItemsDiferentes() {
     int contador = 0;
 
