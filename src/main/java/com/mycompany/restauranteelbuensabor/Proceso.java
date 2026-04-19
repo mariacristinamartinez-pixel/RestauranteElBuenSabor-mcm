@@ -22,7 +22,7 @@ public class Proceso {
             indice++;
         }
         
-        return 0;
+        return subtotal;
         
     }
     
