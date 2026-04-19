@@ -17,7 +17,7 @@ public class RestauranteElBuenSabor {
         Scanner sc = new Scanner(System.in);
 
         List<Producto> menu = MenuRestaurante.obtenerMenu();
-        Pedido pedido = new Pedido();
+        Mesa mesa = new Mesa(1);
 
         int numeroFactura = 1;
         boolean ejecutando = true;
@@ -64,7 +64,7 @@ public class RestauranteElBuenSabor {
                         if (cantidad > 0) {
 
                             Producto seleccionado = menu.get(indice - 1);
-                            pedido.agregarItem(seleccionado, cantidad);
+                            mesa.agregarProducto(seleccionado, cantidad);
 
                             System.out.println("Producto agregado:");
                             System.out.println(" -> " + seleccionado.getNombre() + " x" + cantidad);
@@ -80,29 +80,28 @@ public class RestauranteElBuenSabor {
 
                 case 3:
                     // ver pedido
-                    if (pedido.tieneProductos()) {
+                    if (mesa.tienePedido()) {
 
                         System.out.println("---- PEDIDO ----");
 
-                        for (ItemPedido item : pedido.getItems()) {
+                        for (ItemPedido item : mesa.getPedidoActual().getItems()) {
                             System.out.printf("%-20s x%-5d $%,.0f%n",
                                     item.getProducto().getNombre(),
                                     item.getCantidad(),
                                     item.calcularSubtotal());
                         }
 
-                        System.out.printf("Subtotal: $%,.0f%n", pedido.calcularSubtotal());
-
-                    } else {
-                        System.out.println("No hay productos en el pedido.");
+                        System.out.printf("Subtotal: $%,.0f%n",
+                                mesa.getPedidoActual().calcularSubtotal());
                     }
                     break;
 
                 case 4:
                     // generar factura
-                    if (pedido.tieneProductos()) {
+                    if (mesa.tienePedido()
+                    ) {
 
-                        Factura factura = new Factura(pedido, numeroFactura);
+                        Factura factura = new Factura(mesa.getPedidoActual(), numeroFactura);
                         Facturaimpresor.imprimir(factura);
 
                         numeroFactura++;
@@ -114,8 +113,8 @@ public class RestauranteElBuenSabor {
 
                 case 5:
                     // nueva mesa
-                    pedido.limpiar();
-                    System.out.println("Pedido reiniciado.");
+                    mesa.nuevaOrden();
+                    System.out.println("Nueva orden en mesa.");
                     break;
 
                 case 0:
